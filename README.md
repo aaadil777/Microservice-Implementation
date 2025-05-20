@@ -67,25 +67,6 @@ The microservice returns a JSON response with the following structure:
 
 ### UML Sequence Diagram
 
-```
-@startuml
-actor "Wilson's Main Program"
-participant "Microservice"
-participant "RuneScape API"
+![Sequence UML diagram](https://github.com/user-attachments/assets/a10ab854-8793-466a-a96e-58cd6909f301)
 
-== Request Data ==
-Wilson's Main Program -> Microservice: POST /fetch-hiscores/ {player_name: "Aadil Ali"}
-Microservice -> RuneScape API: GET https://secure.runescape.com/m=hiscore_oldschool/index_lite.json?player=Aadil Ali
-RuneScape API --> Microservice: JSON Response (Hiscores Data)
-Microservice --> Wilson's Main Program: JSON Response {status: "success", message: "Data delivered", player: "Aadil Ali", hiscores: {...}}
-
-== Error Case ==
-Wilson's Main Program -> Microservice: POST /fetch-hiscores/ {player_name: "InvalidPlayer"}
-Microservice -> RuneScape API: GET https://secure.runescape.com/m=hiscore_oldschool/index_lite.json?player=InvalidPlayer
-RuneScape API --> Microservice: HTTP 404 Error
-Microservice --> Wilson's Main Program: JSON Response {status: "error", message: "404 Client Error: Not Found", player: "InvalidPlayer"}
-@enduml
-```
-
-*Note: Use a PlantUML-compatible tool to render the above diagram.*
 
