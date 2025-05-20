@@ -69,7 +69,7 @@ The microservice returns a JSON response with the following structure:
 
 ![Sequence UML diagram](https://github.com/user-attachments/assets/a10ab854-8793-466a-a96e-58cd6909f301)
 
-**Runescape Account Creation to ensure successful username query**
-![image](https://github.com/user-attachments/assets/acaaa94a-8b3d-41b8-94f5-918337ae1d51)
+**Runescape HiScores List**
+![image](https://github.com/user-attachments/assets/c21118e0-fa55-4c01-8d35-66657bf6942b)
 
 
