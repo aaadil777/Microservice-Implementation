@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from httpx import AsyncClient
 import asyncio
-from pydantic import BaseModel
 
 app = FastAPI(title="Wilson's RuneScape Hiscores Microservice")
 
@@ -13,23 +12,19 @@ async def fetch_hiscores(player_name: str) -> dict:
         response.raise_for_status()
         return response.json()
 
-class PlayerRequest(BaseModel):
-    player_name: str
-
 @app.post("/fetch-hiscores/")
-async def get_hiscores(request: PlayerRequest):
+async def get_hiscores(player_name: str):
     try:
-        data = await fetch_hiscores(request.player_name)
-        print(data)
+        data = await fetch_hiscores(player_name)
         return {
             "status": "success",
             "message": "Data delivered",
-            "player": request.player_name,
+            "player": player_name,
             "hiscores": data
         }
     except Exception as e:
         return {
             "status": "error",
             "message": str(e),
-            "player": request.player_name
+            "player": player_name
         }
